@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/todos', function (Request $request) {
     return $request->user();
 });
+
+Route::get("v1/todos","TodosCrudController@getTodos")->middleware('logger');
+
+// Route::get("v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"getTodos"]);
+Route::post("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"addTodo"]);
+Route::put("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"updateTodo"]);
+Route::delete("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"deleteTodo"]);
