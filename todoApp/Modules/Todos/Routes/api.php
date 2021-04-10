@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/todos', function (Request $request) {
 Route::get("v1/todos","TodosCrudController@getTodos")->middleware('logger');
 
 // Route::get("v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"getTodos"]);
-Route::post("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"addTodo"]);
-Route::put("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"updateTodo"]);
-Route::delete("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"deleteTodo"]);
+Route::post("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"addTodo"])->middleware('logger');
+Route::put("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"updateTodo"])->middleware('logger');
+Route::delete("/v1/todos",[\Modules\Todos\Http\Controllers\TodosCrudController::class,"deleteTodo"])->middleware('logger');
