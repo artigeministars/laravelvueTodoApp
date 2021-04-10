@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+  laradockvue:
+    container_name: laradocktodoapp_vue
+    image: laradocktodoapp_vue_img
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+        - type: bind
+          source: .
+          target: /app
+        - '/app/node_modules'
+    ports:
+      - 9180:9180
