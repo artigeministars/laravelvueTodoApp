@@ -1,15 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <Header></Header>
+  <MainTodo msg="Welcome to Todo App"/>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
+// import HelloWorld from './components/HelloWorld.vue';
+import MainTodo from '@/components/MainTodo.vue';
+import Header from '@/components/Header.vue';
 
 @Options({
   components: {
-    HelloWorld,
+    Header,
+    MainTodo,
   },
 })
 export default class App extends Vue {}
@@ -22,6 +25,7 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin:3em;
+  background-color: #c4f095;
 }
 </style>
