@@ -1,6 +1,6 @@
 <template>
   <div>
-  <h1>{{ msg }}</h1>
+  <h1><img src="../assets/icons/8993365461539683258-64.png" /> {{ msg }}</h1>
     <all-todos></all-todos>
   </div>
 </template>
