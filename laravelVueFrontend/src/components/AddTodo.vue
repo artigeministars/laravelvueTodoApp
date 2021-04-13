@@ -4,7 +4,7 @@
       <div>
         <form  @submit.prevent="addTodoLocal">
           <div>
-            <label>Text</label>
+            <label>Todo</label>
             <br />
             <input ref="inputtodo" v-model="addTodoType.text" placeholder="Enter a todo" />
             <br />

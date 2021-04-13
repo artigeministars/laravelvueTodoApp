@@ -1,5 +1,8 @@
 <template>
   <div class="list-container">
+    <div class="list-container-item-topic" v-if="inprogressTodos.length>0">
+    <img src="../../assets/icons/6436999681582884279-32.png" /> In Progress
+    </div>
     <div class="list-container-item" v-for="(todo,key) in inprogressTodos" :key="key" :id="todo.id">{{todo.text}}</div>
   </div>
 </template>
@@ -40,5 +43,15 @@ export default class ListTodos extends Vue {
 .list-container-item:hover {
   background: #bcc712;
   border: 1px solid #0086b3;
+}
+.list-container-item-topic {
+  padding: 26px 22px;
+  background: #ca5bf3;
+  border: 1px solid #9dd990;
+}
+
+.list-container-item-topic:hover {
+  background: #86ecf5;
+  border: 1px solid #eab15b;
 }
 </style>

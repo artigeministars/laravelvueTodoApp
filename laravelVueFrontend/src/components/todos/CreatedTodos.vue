@@ -1,5 +1,8 @@
 <template>
   <div class="list-container">
+    <div class="list-container-item-topic" v-if="createdTodos.length>0">
+      <img src="../../assets/icons/5093727271556279520-32.png" />
+           Created</div>
     <div class="list-container-item" v-for="(todo,key) in createdTodos" :key="key" :id="todo.id">{{todo.text}}</div>
   </div>
 </template>
@@ -42,4 +45,16 @@ export default class ListTodos extends Vue {
   background: #3fc5f1;
   border: 1px solid #eab15b;
 }
+
+.list-container-item-topic {
+  padding: 26px 22px;
+  background: #f55a87;
+  border: 1px solid #9dd990;
+}
+
+.list-container-item-topic:hover {
+  background: #d4f586;
+  border: 1px solid #eab15b;
+}
+
 </style>
