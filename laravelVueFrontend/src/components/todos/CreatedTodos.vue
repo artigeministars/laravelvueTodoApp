@@ -38,7 +38,7 @@ export default class ListTodos extends Vue {
   // private addToDone!: (updateTodo: Pick<ITodo,"id" | "text" | "status">) => Promise<void>;
 
   @todosModuleC.Action
-  private deleteTodo!: typeof todoSliceStore.deleteTodoAction;
+  private deleteTodo!:typeof todoSliceStore.deleteTodo;
   //private deleteTodo!: (todoId: number) => Promise<void>;
 
 

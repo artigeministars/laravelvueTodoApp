@@ -2,7 +2,7 @@ import { VuexModule,Module,Mutation,Action } from "vuex-class-modules";
 import {AddTodoType, ITodo} from "@/store/models/TodoModel";
 import {axiosInstance} from "@/axios";
 
-@Module({ generateMutationSetters: true })
+@Module({ generateMutationSetters: true, })
 export default class TodoSliceStore extends VuexModule {
 
     public todos: ITodo[] = [];
@@ -130,14 +130,15 @@ export default class TodoSliceStore extends VuexModule {
     }
 
     @Action
-    public async deleteTodoAction(todoId: number) : Promise<void> {
-        await axiosInstance.delete(`todos?id=$todoId`)
+    public async deleteTodo(todoId: number) : Promise<void> {
+        await axiosInstance.delete(`todos`,{params: {id: todoId}})
             .then((response) => {
                 console.log(response.data);
                 console.log(response.status);
                 // if(response.status === 200){
                 this.deleteTodoMutation(todoId);
-            // }
+                // }
             }).catch(error => { console.log(error)});
     }
+
 }

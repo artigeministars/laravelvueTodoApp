@@ -39,7 +39,7 @@ export default class ListTodos extends Vue {
 
 
   @todosModuleI.Action
-  private deleteTodo!: typeof  todoSliceStore.deleteTodoAction;
+  private deleteTodo!:typeof todoSliceStore.deleteTodo;
   // private deleteTodo!: () => Promise<void>;
 
 
