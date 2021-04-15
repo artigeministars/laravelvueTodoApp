@@ -3,9 +3,15 @@
     <div class="list-container-item-topic" v-if="createdTodos.length>0">
       <img src="../../assets/icons/5093727271556279520-32.png" />
            Created</div>
-    <div class="list-container-item" v-for="(todo,key) in createdTodos" :key="key" :id="todo.id">{{todo.text}}
-      <button class="button-right" @click="addToInprogresF({id: todo.id,text: todo.text,status: 'inprogress'})"><img class="icon-right" src="../../assets/icons/8993365461539683258-20.png" /></button>
-      <button class="button-right" @click="addToDoneF({id: todo.id,text: todo.text,status: 'done'})"><img class="icon-right" src="../../assets/icons/12916695841582884282-20.png" /></button>
+    <div class="list-container-item" v-for="(todo,key) in createdTodos" :key="key" :id="todo.id">
+      {{todo.text}}
+      <span class="icons-block"><a class="button-left" @click="addToInprogresF({id: todo.id,text: todo.text,status: 'inprogress'})">
+        <img class="icon-right" src="../../assets/icons/8993365461539683258-20.png" /></a>
+      <a class="button-left" @click="addToDoneF({id: todo.id,text: todo.text,status: 'done'})">
+        <img class="icon-right" src="../../assets/icons/12916695841582884282-20.png" /></a>
+    <a class="button-left" @click="deleteTodoC(todo.id)">
+        <img class="icon-right" src="../../assets/icons/16914954041618134434-16.png" /></a>
+    </span>
     </div>
   </div>
 </template>
@@ -24,12 +30,17 @@ export default class ListTodos extends Vue {
   private createdTodos!: () => ITodo[];
 
   @todosModuleC.Action
-  private addToInprogress!: typeof  todoSliceStore.addToInprogress;
+  private addToInprogress!: typeof todoSliceStore.addToInprogress;
   // private addToInprogress!: (updateTodo: Pick<ITodo,"id" | "text" | "status">) => Promise<void>;
 
   @todosModuleC.Action
-  private addToDone! : typeof  todoSliceStore.addToDone;
+  private addToDone! : typeof todoSliceStore.addToDone;
   // private addToDone!: (updateTodo: Pick<ITodo,"id" | "text" | "status">) => Promise<void>;
+
+  @todosModuleC.Action
+  private deleteTodo!: typeof todoSliceStore.deleteTodoAction;
+  //private deleteTodo!: (todoId: number) => Promise<void>;
+
 
   addToInprogresF(updateTodo: Pick<ITodo,"id" | "text" | "status">){
     this.addToInprogress(updateTodo);
@@ -37,6 +48,10 @@ export default class ListTodos extends Vue {
 
   addToDoneF(updateTodo: Pick<ITodo,"id" | "text" | "status">){
     this.addToDone(updateTodo);
+  }
+
+  deleteTodoC(todoId: number) {
+   this.deleteTodo(todoId);
   }
 
   mounted(){
@@ -57,7 +72,8 @@ export default class ListTodos extends Vue {
 
 .list-container-item {
   padding: 10px 20px;
-  background: #0086b3;
+  background: #00b351;
+  overflow: hidden;
   border: 1px solid #f09898;
 }
 
@@ -82,5 +98,11 @@ export default class ListTodos extends Vue {
 }
 .button-right {
   float:right;
+}
+.button-left {
+  float:left;
+}
+.icons-block {
+  display: flex;
 }
 </style>

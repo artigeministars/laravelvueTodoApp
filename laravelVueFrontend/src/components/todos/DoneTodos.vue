@@ -4,8 +4,13 @@
       <img src="../../assets/icons/15861719021556282334-32.png" />
            Done</div>
     <div class="list-container-item" v-for="(todo,key) in doneTodos" :key="key" :id="todo.id">{{todo.text}}
-      <button class="button-right" @click="addToInprogressF({id: todo.id,text: todo.text,status: 'inprogress'})"><img class="icon-right" src="../../assets/icons/8993365461539683258-20.png" /></button>
-      <button class="button-right" @click="addToCreatedF({id: todo.id,text: todo.text,status: 'created'})"><img class="icon-right" src="../../assets/icons/9594406041586787812-20.png" /></button>
+      <span class="icons-block"><a class="button-left" @click="addToInprogressF({id: todo.id,text: todo.text,status: 'inprogress'})">
+        <img class="icon-right" src="../../assets/icons/8993365461539683258-20.png" /></a>
+      <a class="button-left" @click="addToCreatedF({id: todo.id,text: todo.text,status: 'created'})">
+        <img class="icon-right" src="../../assets/icons/9594406041586787812-20.png" /></a>
+          <a class="button-left" @click="deleteTodoD(todo.id)">
+        <img class="icon-right" src="../../assets/icons/16914954041618134434-16.png" /></a>
+      </span>
     </div>
   </div>
 </template>
@@ -31,6 +36,13 @@ export default class ListTodos extends Vue {
   private addToCreated!: typeof todoSliceStore.addToCreated;
   // private addToCreated!: (updateTodo: Pick<ITodo,"id" | "text" | "status">) => Promise<void>;
 
+  @todosModuleD.Action
+  private deleteTodo!: typeof  todoSliceStore.deleteTodoAction;
+  // private deleteTodo!: () => Promise<void>;
+
+  deleteTodoD(todoId: number) {
+    this.deleteTodo(todoId);
+  }
 
   addToInprogressF(updateTodo: Pick<ITodo,"id" | "text" | "status">){
     this.addToInprogress(updateTodo);
@@ -58,6 +70,7 @@ export default class ListTodos extends Vue {
 .list-container-item {
   padding: 10px 20px;
   background: #f3beb8;
+  overflow: hidden;
   border: 1px solid #f09898;
 }
 .list-container-item:hover {
@@ -80,5 +93,11 @@ export default class ListTodos extends Vue {
 }
 .button-right {
   float:right;
+}
+.button-left {
+  float:left;
+}
+.icons-block {
+  display: flex;
 }
 </style>
