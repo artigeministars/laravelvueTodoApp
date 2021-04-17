@@ -1,11 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
-// import axios from 'axios'
-// import VueAxios from 'vue-axios'
+import {router} from '@/routes';
 
-
-const app = createApp(App).use(store).mount('#app')
+const app = createApp(App).use(store).use(router).mount('#app')
 // app.use(VueAxios, axios);
-// .use(VueAxios, axios)
- export default app;
+
+export default app;

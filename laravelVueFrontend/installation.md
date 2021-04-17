@@ -10,3 +10,4 @@ npm audit fix --force
 or 
 npm install --legacy-peer-deps
 
+npm install vue-router@4

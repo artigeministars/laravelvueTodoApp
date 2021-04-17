@@ -1,16 +1,16 @@
 <template>
   <div class="list-container">
     <div class="list-container-item-topic" v-if="createdTodos.length>0">
-      <img src="../../assets/icons/5093727271556279520-32.png" />
+      <img src="../../assets/icons/5093727271556279520-32.png" alt="created" />
            Created</div>
     <div class="list-container-item" v-for="(todo,key) in createdTodos" :key="key" :id="todo.id">
       {{todo.text}}
       <span class="icons-block"><a class="button-left" @click="addToInprogresF({id: todo.id,text: todo.text,status: 'inprogress'})">
-        <img class="icon-right" src="../../assets/icons/8993365461539683258-20.png" /></a>
+        <img class="icon-right" alt="inprogress" src="../../assets/icons/8993365461539683258-20.png" /></a>
       <a class="button-left" @click="addToDoneF({id: todo.id,text: todo.text,status: 'done'})">
-        <img class="icon-right" src="../../assets/icons/12916695841582884282-20.png" /></a>
+        <img class="icon-right" src="../../assets/icons/12916695841582884282-20.png" alt="done" /></a>
     <a class="button-left" @click="deleteTodoC(todo.id)">
-        <img class="icon-right" src="../../assets/icons/16914954041618134434-16.png" /></a>
+        <img class="icon-right" src="../../assets/icons/16914954041618134434-16.png" alt="delete" /></a>
     </span>
     </div>
   </div>
@@ -95,9 +95,6 @@ export default class ListTodos extends Vue {
 .icon-right {
   float:right;
   margin-left:0.5em;
-}
-.button-right {
-  float:right;
 }
 .button-left {
   float:left;
